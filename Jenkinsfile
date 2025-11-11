@@ -1,5 +1,7 @@
 pipeline {
     agent none
+
+
     stages {
         stage('Build') {
             agent {
@@ -10,11 +12,19 @@ pipeline {
             }
             steps {
                 sh '''
-                    ls -la            
+                    echo "=== BUILDING INSIDE DOCKER ==="
+                    ls -la
+                   
                     npm --version
                     npm ci
+                   
+                    echo "=== RUNNING BUILD ==="
                     npm run build
+                   
+                    echo "=== BUILD OUTPUT (build/ folder) ==="
                     ls -la build/
+                   
+                    echo "Build completed successfully!"
                 '''
             }
         }
