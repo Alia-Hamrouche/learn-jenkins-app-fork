@@ -15,8 +15,6 @@ pipeline {
                     npm ci
                     npm run build
                     ls -la build/
-                   
-                    echo "Build completed successfully!"
                 '''
             }
         }
